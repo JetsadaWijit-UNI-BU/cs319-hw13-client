@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { useMealStore } from '../stores/useMealStore';
+import { resolveImageUrl } from '../lib/api';
 
 export const FavoritesPage: React.FC = () => {
   const { user, favorites, login, loadFavorites, removeFavorite } = useMealStore();
@@ -42,7 +43,7 @@ export const FavoritesPage: React.FC = () => {
         {favorites.map((meal) => (
           <div key={meal.idMeal} className="card bg-base-100 shadow-md border border-base-300 flex flex-col justify-between">
             <figure className="px-4 pt-4">
-              <img src={meal.strMealThumb} alt={meal.strMeal} className="rounded-lg h-48 w-full object-cover" />
+              <img src={resolveImageUrl(meal.strMealThumb)} alt={meal.strMeal} className="rounded-lg h-48 w-full object-cover" />
             </figure>
             <div className="card-body p-4 flex flex-col justify-between flex-1">
               <div>
