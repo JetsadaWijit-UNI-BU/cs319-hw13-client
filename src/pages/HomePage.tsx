@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router';
 import { useMealStore } from '../stores/useMealStore';
 import { useMeals, type Meal } from '../hooks/useMeals';
+import { resolveImageUrl } from '../lib/api';
 
 export const HomePage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -56,7 +57,7 @@ export const HomePage: React.FC = () => {
             return (
               <div key={meal.idMeal} className="border border-base-200 rounded-lg p-3 bg-base-100 flex flex-col justify-between">
                 <div>
-                  <img src={meal.strMealThumb} alt={meal.strMeal} className="rounded h-36 w-full object-cover mb-2" />
+                  <img src={resolveImageUrl(meal.strMealThumb)} alt={meal.strMeal} className="rounded h-36 w-full object-cover mb-2" />
                   <h3 className="font-semibold text-sm line-clamp-1">{meal.strMeal}</h3>
                   <p className="text-xs text-base-content/60 mt-0.5">{meal.strCategory || 'ทั่วไป'}</p>
                 </div>

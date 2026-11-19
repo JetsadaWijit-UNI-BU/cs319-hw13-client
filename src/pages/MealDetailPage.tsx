@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, Link, useNavigate } from "react-router";
 import { useMealDetail } from "../hooks/useMeals";
 import { useMealStore } from "../stores/useMealStore";
+import { resolveImageUrl } from "../lib/api";
 
 export const MealDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -116,7 +117,7 @@ export const MealDetailPage: React.FC = () => {
 
         <figure>
           <img
-            src={meal.strMealThumb}
+            src={resolveImageUrl(meal.strMealThumb)}
             alt={meal.strMeal}
             className="rounded-xl shadow-md max-h-80 w-full object-cover"
           />
